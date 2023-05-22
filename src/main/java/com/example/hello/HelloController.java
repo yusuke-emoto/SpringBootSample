@@ -13,7 +13,7 @@ public class HelloController {
     @Autowired
     private HelloService service;
 
-    @GetMapping("/hello")
+    @GetMapping("/hello") //Getリクエストで送られてくる/helloを受け取って、メソッドが動く。ここではhello.htmlを返している
     public String getHello() {
         // hello.htmlに画面遷移
         return "hello";
