@@ -6,7 +6,7 @@
 </head>
 <body>
   <h1>Hello World</h1>
-  <form method="post" action="/hello">
+  <form method="post" action="/hello"> <!-- このformタグに囲まれたボタンを押すとPostリクエストの/helloがcontroller側に飛ぶ。送る内容は入力欄のtext情報を送っている。 -->
     入力: <input type="text" name="text1"/>
     <input type="submit" value="クリック" />
   </form>

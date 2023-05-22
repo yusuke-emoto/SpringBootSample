@@ -19,13 +19,13 @@ public class HelloController {
         return "hello";
     }
 
-    @PostMapping("/hello")
-    public String postRequest(@RequestParam("text1") String str, Model model) {
+    @PostMapping("/hello") //Postリクエストで送られてくる/helloを受け取ることでメソッドが動く。
+    public String postRequest(@RequestParam("text1") String str, Model model) { //@RequestParamnをつけることで画面から入力された情報を受け取れる。この場合、"text1"というnameで入力さてた内容をstrに入れている。
         // 画面から受け取った文字列をModelに登録
-        model.addAttribute("sample", str);
+        model.addAttribute("sample", str); //ModelクラスのaddAttributeでModelにキー名と値を登録する。
 
         // response.htmlに画面遷移
-        return "hello/response";
+        return "hello/response"; //helloフォルダのresponse.htmlを呼び出す。
     }
 
     @PostMapping("/hello/db")
