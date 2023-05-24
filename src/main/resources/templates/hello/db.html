@@ -9,11 +9,11 @@
   <table>
     <tr>
       <td>ID:</td>
-      <td th:text="${employee.employeeId}"></td>
+      <td th:text="${employee.employeeId}"></td><!--Modelに登録したEmployeeクラスのemployeeIdを表示する  -->
     </tr>
     <tr>
       <td>名前:</td>
-      <td th:text="${employee.employeeName}"></td>
+      <td th:text="${employee.employeeName}"></td><!--クラス型の変数employeeを登録したので、＄{キー名.フィールド名}と指定する必要がある  -->
     </tr>
     <tr>
       <td>年齢:</td>
