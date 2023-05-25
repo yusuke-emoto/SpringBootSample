@@ -15,12 +15,12 @@ public class UserApplicationService {
     private MessageSource messageSource;
 
     /** 性別のMapを生成する */
-    public Map<String, Integer> getGenderMap(Locale locale) {
-        Map<String, Integer> genderMap = new LinkedHashMap<>();
-        String male = messageSource.getMessage("male", null, locale);
-        String female = messageSource.getMessage("female", null, locale);
-        genderMap.put(male, 1);
-        genderMap.put(female, 2);
-        return genderMap;
+    public Map<String, Integer> getGenderMap(/*Locale locale*/) {
+        Map<String, Integer> genderMap = new LinkedHashMap<>(); //LinkedHashMapインスタンスを生成して変数genderMapに代入。
+        //String male = messageSource.getMessage("male", null, locale);
+       // String female = messageSource.getMessage("female", null, locale);
+        genderMap.put("男性", 1);  //Map型の変数genderMapにputメソッドを使って、キー名"男性",値を１で登録している。
+        genderMap.put("女性", 2); //Map型の変数genderMapにputメソッドを使って、キー名"女性",値を2で登録している。
+        return genderMap; // 22,23行の値を登録した変数genderMapを戻り値として返す。
     }
 }

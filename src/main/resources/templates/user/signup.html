@@ -47,9 +47,9 @@
     </div>
     <!-- 性別 -->
     <div class="form-group">
-      <div th:each="item : ${genderMap}" class="form-check-inline">
-        <input type="radio" class="form-check-input" th:value="${item.value}" th:field="*{gender}" th:errorclass="is-invalid"/>
-        <label class="form-check-label" th:text="${item.key}"></label>
+      <div th:each="item : ${genderMap}" class="form-check-inline"><!-- th:eachは拡張for文 -->
+        <input type="radio" class="form-check-input" th:value="${item.value}" th:field="*{gender}" th:errorclass="is-invalid"/><!-- ラジオボタン作成している。 -->
+        <label class="form-check-label" th:text="${item.key}"></label><!-- ラジオボタンの横にラベルを表示している -->
       </div>
       <div class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
     </div>

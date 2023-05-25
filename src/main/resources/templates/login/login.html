@@ -11,8 +11,8 @@
   <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
   <title>ログイン</title>
 </head>
-<body class="bg-light">
-  <div class="text-center">
+<body class="bg-light"> <!-- 背景色が変わる -->
+  <div class="text-center"> <!-- 中央寄せ -->
     <form method="post" th:action="@{/login}" class="form-login">
       <h2>ログイン</h2>
       <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
@@ -22,7 +22,7 @@
       </p>
       <!-- ユーザーID -->
       <div class="form-group">
-        <label for="userId" class="sr-only">userId</label>
+        <label for="userId" class="sr-only">userId</label> <!--sr-only"のsrはスクリーンリーダーのこと。sr-onlyを指定した要素はスクリーンリーダーのみに読み上げられる  -->
         <input type="text" class="form-control" placeholder="ユーザーID" name="userId"/>
       </div>
       <!-- パスワード -->

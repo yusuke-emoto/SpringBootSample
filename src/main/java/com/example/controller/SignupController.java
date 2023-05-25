@@ -26,7 +26,7 @@ import com.example.form.SignupForm;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/user") //@RequestMappingをつけると引数が接頭辞（プリフィックス）になる。
 @Slf4j
 public class SignupController {
 
@@ -40,25 +40,25 @@ public class SignupController {
     private ModelMapper modelMapper;
 
     /** ユーザー登録画面を表示 */
-    @GetMapping("/signup")
-    public String getSignup(Model model, Locale locale,
-            @ModelAttribute SignupForm form) {
+    @GetMapping("/signup") //@RequestMapping("/user")がクラスについているので/user/signupで来た場合、受け取る。
+    public String getSignup(Model model/*, Locale locale,
+            @ModelAttribute SignupForm form*/) {
         // 性別を取得
-        Map<String, Integer> genderMap = userApplicationService.getGenderMap(locale);
-        model.addAttribute("genderMap", genderMap);
+        Map<String, Integer> genderMap = userApplicationService.getGenderMap(/*locale*/); //userApplicationServiceのgetGenderMapメソッドを使い、返り値を変数 genderMapに代入。
+        model.addAttribute("genderMap", genderMap); //キー名"genderMap"で値を変数genderMapでModelに登録。
 
         // ユーザー登録画面に遷移
-        return "user/signup";
+        return "user/signup"; //userフォルダのsignup.htmlを返す。
     }
 
     /** ユーザー登録処理 */
     @PostMapping("/signup")
-    public String postSignup(Model model, Locale locale,
+    public String postSignup(/*Model model, Locale locale,
             @ModelAttribute @Validated(GroupOrder.class) SignupForm form,
-            BindingResult bindingResult) {
+            BindingResult bindingResult */) {
 
         // 入力チェック結果
-        if (bindingResult.hasErrors()) {
+       /* if (bindingResult.hasErrors()) {
             // NG:ユーザー登録画面に戻ります
             return getSignup(model, locale, form);
         }
@@ -69,10 +69,10 @@ public class SignupController {
         MUser user = modelMapper.map(form, MUser.class);
 
         // ユーザー登録
-        userService.signup(user);
+        userService.signup(user); */
 
         // ログイン画面にリダイレクト
-        return "redirect:/login";
+        return "redirect:/login"; //PRGパターンに則り、リダイレクトしてからGetメソッドで/loginにリクエストしている。リダイレクトしない場合、遷移先のloginで更新を押すと登録処理のメソッド（今回の場合、postSignup）が動いてしまう為、2重登録されてしまう。
     }
 
     /** データベース関連の例外処理 */

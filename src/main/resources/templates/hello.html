@@ -12,7 +12,7 @@
   </form>
   <br/>
   <form method="post" action="/hello/db"> <!-- このformタグに囲まれたボタンを押すと"/hello/db"に対してPOSTリクエストを送る  -->
-    従業員ID:<input type="text" name="text2" th:value="${text2_value}" />
+    従業員ID:<input type="text" name="text2" th:value="${text2_value}" /> <!-- th:valueはフォームに保持する値  -->
     <input type="submit" value="クリック" />
   </form>
 </body>

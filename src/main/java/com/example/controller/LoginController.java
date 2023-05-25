@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
 
     /** ログイン画面を表示 */
-    @GetMapping("/login")
+    @GetMapping("/login") //"/login"に対してGetメソッドで送られてくるリクエストを受け取る
     public String getLogin() {
-        return "login/login";
+        return "login/login"; //loginフォルダのlogin.htmlを返す
     }
 
     /** ユーザー一覧画面にリダイレクト */
