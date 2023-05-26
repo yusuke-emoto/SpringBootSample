@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/user") //@RequestMappingをつけると引数が接頭辞（プリフィックス）になる。
-@Slf4j
+@Slf4j //Lombokのアノテーション。これをつけるとlogという変数、メソッドが使えるようになる
 public class SignupController {
 
     @Autowired
@@ -41,8 +41,8 @@ public class SignupController {
 
     /** ユーザー登録画面を表示 */
     @GetMapping("/signup") //@RequestMapping("/user")がクラスについているので/user/signupで来た場合、受け取る。
-    public String getSignup(Model model, Locale locale/*, //Localeクラスはプログラムを実行している環境のローケルを識別し、オブジェクトとして取得するためのクラス。
-            @ModelAttribute SignupForm form*/) {
+    public String getSignup(Model model, Locale locale, //Localeクラスはプログラムを実行している環境のローケルを識別し、オブジェクトとして取得するためのクラス。
+            @ModelAttribute SignupForm form) {//@ModelAttributeをつけると返り値がModelに登録される
         // 性別を取得
         Map<String, Integer> genderMap = userApplicationService.getGenderMap(locale); //userApplicationServiceのgetGenderMapメソッドを使い、返り値を変数 genderMapに代入。メソッドの引数にlocaleを渡しているので、実行環境に応じた言語等が指定される
         model.addAttribute("genderMap", genderMap); //キー名"genderMap"で値を変数genderMapでModelに登録。
@@ -53,8 +53,8 @@ public class SignupController {
 
     /** ユーザー登録処理 */
     @PostMapping("/signup")
-    public String postSignup(/*Model model, Locale locale,
-            @ModelAttribute @Validated(GroupOrder.class) SignupForm form,
+    public String postSignup(/*Model model, Locale locale,*/
+            @ModelAttribute /*@Validated(GroupOrder.class)*/ SignupForm form/*,
             BindingResult bindingResult */) {
 
         // 入力チェック結果
@@ -63,7 +63,7 @@ public class SignupController {
             return getSignup(model, locale, form);
         }
 
-        log.info(form.toString());
+        log.info(form.toString()); //infoレベルのログを出すメソッド。内容はformの内容をtoString()でString型に変換してから出力している。
 
         // formをMUserクラスに変換
         MUser user = modelMapper.map(form, MUser.class);

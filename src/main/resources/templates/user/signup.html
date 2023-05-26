@@ -13,12 +13,12 @@
   <title th:text="#{user.signup.title}"></title><!-- #{キー名}でmessages.propertiesから値を取得できる  -->
 </head>
 <body class="bg-light">
-  <form id="signup-form" method="post" action="/user/signup" class="form-signup" th:object="${signupForm}">
+  <form id="signup-form" method="post" action="/user/signup" class="form-signup" th:object="${signupForm}"><!-- th:objectをつけるとModelに登録されたキー名の記述を省ける -->
     <h1 class="text-center" th:text="#{user.signup.title}"></h1>
     <!-- ユーザーID -->
     <div class="form-group">
       <label for="userId" th:text="#{userId}"></label>
-      <input type="text" class="form-control" th:field="*{userId}" th:errorclass="is-invalid"/>
+      <input type="text" class="form-control" th:field="*{userId}" th:errorclass="is-invalid"/><!--th:fieldでjavaのクラスと画面の入力内容をバインド（結びつける）ことができる  -->
       <div class="invalid-feedback" th:errors="*{userId}"></div>
     </div>
     <!-- パスワード -->
