@@ -41,10 +41,10 @@ public class SignupController {
 
     /** ユーザー登録画面を表示 */
     @GetMapping("/signup") //@RequestMapping("/user")がクラスについているので/user/signupで来た場合、受け取る。
-    public String getSignup(Model model/*, Locale locale,
+    public String getSignup(Model model, Locale locale/*, //Localeクラスはプログラムを実行している環境のローケルを識別し、オブジェクトとして取得するためのクラス。
             @ModelAttribute SignupForm form*/) {
         // 性別を取得
-        Map<String, Integer> genderMap = userApplicationService.getGenderMap(/*locale*/); //userApplicationServiceのgetGenderMapメソッドを使い、返り値を変数 genderMapに代入。
+        Map<String, Integer> genderMap = userApplicationService.getGenderMap(locale); //userApplicationServiceのgetGenderMapメソッドを使い、返り値を変数 genderMapに代入。メソッドの引数にlocaleを渡しているので、実行環境に応じた言語等が指定される
         model.addAttribute("genderMap", genderMap); //キー名"genderMap"で値を変数genderMapでModelに登録。
 
         // ユーザー登録画面に遷移
