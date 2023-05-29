@@ -53,20 +53,20 @@ public class SignupController {
 
     /** ユーザー登録処理 */
     @PostMapping("/signup")
-    public String postSignup(/*Model model, Locale locale,*/
-            @ModelAttribute /*@Validated(GroupOrder.class)*/ SignupForm form/*,
-            BindingResult bindingResult */) {
+    public String postSignup(Model model, Locale locale,
+            @ModelAttribute /*@Validated(GroupOrder.class)*/ SignupForm form,
+            BindingResult bindingResult)  { //バインドエラーやバリデーションエラーはBindingResultのメソッドで確認できる
 
         // 入力チェック結果
-       /* if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {//バインドエラーやバリデーションエラーが発生したとき
             // NG:ユーザー登録画面に戻ります
-            return getSignup(model, locale, form);
+            return getSignup(model, locale, form);//getSignupメソッドにmodel, locale, formの変数を渡してメソッドを動かす
         }
 
         log.info(form.toString()); //infoレベルのログを出すメソッド。内容はformの内容をtoString()でString型に変換してから出力している。
 
         // formをMUserクラスに変換
-        MUser user = modelMapper.map(form, MUser.class);
+      /*  MUser user = modelMapper.map(form, MUser.class);
 
         // ユーザー登録
         userService.signup(user); */

@@ -18,8 +18,8 @@
     <!-- ユーザーID -->
     <div class="form-group">
       <label for="userId" th:text="#{userId}"></label>
-      <input type="text" class="form-control" th:field="*{userId}" th:errorclass="is-invalid"/><!--th:fieldでjavaのクラスと画面の入力内容をバインド（結びつける）ことができる  -->
-      <div class="invalid-feedback" th:errors="*{userId}"></div>
+      <input type="text" class="form-control" th:field="*{userId}" th:errorclass="is-invalid"/><!--th:fieldでjavaのクラスと画面の入力内容をバインド（結びつける）ことができる。th:errorclassは th:fieldで指定したフィールドでエラーが起きた場合、発動する -->
+      <div class="invalid-feedback" th:errors="*{userId}"></div><!-- th:errosは指定したフィールドでエラーが出た場合、エラーメッセージをタグ内に表示する。invalid-feedbackはBootStrapが用意したCSSのクラス -->
     </div>
     <!-- パスワード -->
     <div class="form-group">
