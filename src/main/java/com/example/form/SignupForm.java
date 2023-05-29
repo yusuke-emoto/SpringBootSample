@@ -17,13 +17,13 @@ import lombok.Data;
 @Data
 public class SignupForm {
 
-    @NotBlank(groups = ValidGroup1.class)
-    @Email(groups = ValidGroup2.class)
+    @NotBlank(groups = ValidGroup1.class)//文字列がnull,空文字,空白スペースのみでないことをチェックする
+    @Email(groups = ValidGroup2.class)//文字列がメールアドレス形式かどうかをチェックする
     private String userId;
 
     @NotBlank(groups = ValidGroup1.class)
-    @Length(min = 4, max = 100, groups = ValidGroup2.class)
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", groups = ValidGroup2.class)
+    @Length(min = 4, max = 100, groups = ValidGroup2.class)//文字列の長さが指定した範囲内かどうかをチェック
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", groups = ValidGroup2.class)//指定した正規表現に一致するかどうかチェック
     private String password;
 
     @NotBlank(groups = ValidGroup1.class)
@@ -33,8 +33,8 @@ public class SignupForm {
     @NotNull(groups = ValidGroup1.class)
     private Date birthday;
 
-    @Min(value = 20, groups = ValidGroup2.class)
-    @Max(value = 100, groups = ValidGroup2.class)
+    @Min(value = 20, groups = ValidGroup2.class)//値以上かチェック
+    @Max(value = 100, groups = ValidGroup2.class)//値以下であるかチェック
     private Integer age;
 
     @NotNull(groups = ValidGroup1.class)
