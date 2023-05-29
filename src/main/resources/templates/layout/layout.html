@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"><!-- xmlns:layoutでhttp://www.ultraq.net.nz/thymeleaf/layout"を指定するとレイアウトを使用できる -->
 <head>
   <meta charset="UTF-8"></meta>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +14,7 @@
 </head>
 <body>
   <!-- ヘッダー -->
-  <nav layout:replace="~{layout/header::header}"></nav>
+  <nav layout:replace="~{layout/header::header}"></nav><!--layout:replaceで他のHTMLファイルを読み込む  -->
   <!-- メニュー -->
   <div class="container-fluid">
     <div class="row">
@@ -27,7 +27,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-10 offset-sm-2 main">
-        <div layout:fragment="content"></div>
+        <div layout:fragment="content"></div><!-- layout:fragmentは他のHTMLファイルをタグ内に追加する  -->
       </div>
     </div>
   </div>

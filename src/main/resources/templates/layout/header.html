@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layout/layout}">
+  layout:decorate="~{layout/layout}"><!--  layout:decorateはこのHTMLをどこに組み込むかを指定する -->
 <head>
 </head>
 <body>
-  <nav layout:fragment="header" class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark">
+  <nav layout:fragment="header" class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark"><!-- layout:fragment ここではキー名を指定している。layout側でキー名を指定して結び付けてる -->
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">SpringSample</a>
