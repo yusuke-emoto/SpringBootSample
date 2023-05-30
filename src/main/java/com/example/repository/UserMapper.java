@@ -7,11 +7,11 @@ import org.apache.ibatis.annotations.Param;
 
 import com.example.domain.user.model.MUser;
 
-@Mapper
+@Mapper //Mybatisでリポジトリー（記憶しとく為の箱みたいなもん）を作るためにはインターフェースに@Mapperをつける
 public interface UserMapper {
 
     /** ユーザー登録 */
-    public int insertOne(MUser user);
+    public int insertOne(MUser user); //SQLでINSERT　INTOをして引数として受け取った値をテーブルに登録している
 
     /** ユーザー取得 */
     public List<MUser> findMany(MUser user);

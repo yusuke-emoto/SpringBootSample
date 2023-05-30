@@ -3,7 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- Mapperとxmlのマッピング -->
-<mapper namespace="com.example.repository.UserMapper">
+<mapper namespace="com.example.repository.UserMapper"><!-- mapperタグの namespaceにマッピングしたいインターフェース名を指定する-->
 
   <!-- マッピング定義(ユーザー) -->
   <resultMap type="com.example.domain.user.model.MUser" id="user">
@@ -33,7 +33,7 @@
   </resultMap>
 
   <!-- ユーザー1件登録 -->
-  <insert id="insertOne">
+  <insert id="insertOne"><!-- insert idにMapperのメソッド名を指定するとSQL文がマッピングされる -->
     insert into m_user(
         user_id
       , password

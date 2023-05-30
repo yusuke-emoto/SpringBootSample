@@ -21,16 +21,16 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder encoder;
 
     /** ユーザー登録 */
-    @Override
+    @Override //UserServiceインターフェースのsignupメソッドをオーバーライドしている
     public void signup(MUser user) {
-        user.setDepartmentId(1); // 部署
-        user.setRole("ROLE_GENERAL"); // ロール
+        user.setDepartmentId(1); // 部署　MuserクラスのDepartmentIdに値をセットしている
+        user.setRole("ROLE_GENERAL"); // ロール　MuserクラスのRoleに値をセットしている
 
         // パスワード暗号化
         String rawPassword = user.getPassword();
         user.setPassword(encoder.encode(rawPassword));
 
-        mapper.insertOne(user);
+        mapper.insertOne(user); //UserMapperクラスのinsertOneメソッドにuser変数を引数として渡している。
     }
 
     /** ユーザー取得 */

@@ -66,10 +66,10 @@ public class SignupController {
         log.info(form.toString()); //infoレベルのログを出すメソッド。内容はformの内容をtoString()でString型に変換してから出力している。
 
         // formをMUserクラスに変換
-      /*  MUser user = modelMapper.map(form, MUser.class);
+        MUser user = modelMapper.map(form, MUser.class); //modelMapperクラスのmapメソッドを使って、formに入力された内容をMUserクラスにコピーしている
 
         // ユーザー登録
-        userService.signup(user); */
+        userService.signup(user); //formをコピーしたMUserクラスを変数userとしてsignup()メソッドに渡して起動。
 
         // ログイン画面にリダイレクト
         return "redirect:/login"; //PRGパターンに則り、リダイレクトしてからGetメソッドで/loginにリクエストしている。リダイレクトしない場合、遷移先のloginで更新を押すと登録処理のメソッド（今回の場合、postSignup）が動いてしまう為、2重登録されてしまう。
