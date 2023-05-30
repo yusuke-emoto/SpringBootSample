@@ -57,7 +57,7 @@
   </insert>
 
   <!-- ユーザー複数件取得 -->
-  <select id="findMany" resultType="MUser">
+  <select id="findMany" resultType="MUser"><!-- select文を書くときはselectタグを使用する。resultType属性には戻り値のデータ型を指定する -->
     select
       *
     from

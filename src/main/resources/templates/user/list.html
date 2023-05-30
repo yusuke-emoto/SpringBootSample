@@ -37,7 +37,7 @@
     </div>
     <!-- 一覧表示 -->
     <div>
-      <table class="table table-striped table-bordered table-hover">
+      <table class="table table-striped table-bordered table-hover"><!-- table-stripedは1行おきに背景色をつける。table-borderedはテーブルの各セルにボーダーをつける。table-hoverはカーソルを合わせると背景色が変わる -->
         <thead class="thead-light">
           <tr>
             <th class="th-width">ユーザーID</th>
@@ -49,7 +49,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="item: ${userList}">
+          <tr th:each="item: ${userList}"><!-- Modelに登録したuserListをth:each（拡張for文)で回す -->
             <td th:text="${item.userId}"></td>
             <td th:text="${item.userName}"></td>
             <td th:text="${#dates.format(item.birthday, 'YYYY/MM/dd')}"></td>

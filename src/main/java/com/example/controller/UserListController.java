@@ -27,16 +27,16 @@ public class UserListController {
 
     /** ユーザー一覧画面を表示 */
     @GetMapping("/list")
-    public String getUserList(@ModelAttribute UserListForm form, Model model) {
+    public String getUserList(/*@ModelAttribute UserListForm form,*/ Model model) {
 
         // formをMUserクラスに変換
-        MUser user = modelMapper.map(form, MUser.class);
+      /*  MUser user = modelMapper.map(form, MUser.class);*/
 
         // ユーザー一覧取得
-        List<MUser> userList = userService.getUsers(user);
+        List<MUser> userList = userService.getUsers(/*user*/); //UserServiceクラスのgetUsersメソッドの返り値をuserListに代入している。
 
         // Modelに登録
-        model.addAttribute("userList", userList);
+        model.addAttribute("userList", userList); //取得してきた値userListをキー名"userList"と一緒にModelに登録
 
         // ユーザー一覧画面を表示
         return "user/list";

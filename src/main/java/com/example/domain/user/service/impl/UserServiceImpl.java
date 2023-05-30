@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     /** ユーザー取得 */
     @Override
     public List<MUser> getUsers(MUser user) {
-        return mapper.findMany(user);
+        return mapper.findMany(user); //UseMapperクラスの.findManyメソッドにuser変数を引数として渡している。
     }
 
     /** ユーザー取得(1件) */
