@@ -56,7 +56,7 @@
             <td th:text="${item.age}"></td>
             <td th:text="${item.gender == 1} ? '男性': '女性'"></td>
             <td>
-              <a class="btn btn-primary" th:href="@{'/user/detail/' + ${item.userId}}">
+              <a class="btn btn-primary" th:href="@{'/user/detail/' + ${item.userId}}"><!-- 動的URLを作っている。+ ${item.userId}の部分がユーザーIDによって変わる -->
                 詳細
               </a>
             </td>

@@ -27,19 +27,19 @@ public class UserDetailController {
     private ModelMapper modelMapper;
 
     /** ユーザー詳細画面を表示 */
-    @GetMapping("/detail/{userId:.+}")
-    public String getUser(UserDetailForm form, Model model, @PathVariable("userId") String userId) {
+    @GetMapping("/detail/{userId:.+}")//動的URL。userId:.+になっているのはユーザーIDがメールアドレス形式の為、正規表現を用いている。
+    public String getUser(UserDetailForm form, Model model, @PathVariable("userId") String userId) { //@PathVariableをつけるとURL内の変数の値を受け取ることができる
 
         // ユーザーを1件取得
-        MUser user = userService.getUserOne(userId);
-        user.setPassword(null);
+        MUser user = userService.getUserOne(userId); // UserServiceクラスのgetUserOneメソッドにuserIdを引数で渡している。userIdは動的URLから取得した値
+        user.setPassword(null);//Passwordにnullを代入
 
         // MUserをformに変換
-        form = modelMapper.map(user, UserDetailForm.class);
+        form = modelMapper.map(user, UserDetailForm.class);//検索してきた値userをUserDetailFormクラスにコピー
         form.setSalaryList(user.getSalaryList());
 
         // Modelに登録
-        model.addAttribute("userDetailForm", form);
+        model.addAttribute("userDetailForm", form);//コピーして代入した値formをキー名"userDetailForm"でModelに登録
 
         // ユーザー詳細画面を表示
         return "user/detail";

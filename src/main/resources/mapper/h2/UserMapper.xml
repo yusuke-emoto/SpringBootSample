@@ -6,9 +6,9 @@
 <mapper namespace="com.example.repository.UserMapper"><!-- mapperタグの namespaceにマッピングしたいインターフェース名を指定する-->
 
   <!-- マッピング定義(ユーザー) -->
-  <resultMap type="com.example.domain.user.model.MUser" id="user">
-    <id column="user_id" property="userId" />
-    <result column="password" property="password" />
+  <resultMap type="com.example.domain.user.model.MUser" id="user"> <!-- resultMapタグでselect結果とJavaクラスをマッピングする。type属性にはパッケージ名＋クラス名を指定。id属性には任意の値を入れる -->
+    <id column="user_id" property="userId" /><!-- idタグの値の数だけ戻り値のListにデータが入る -->
+    <result column="password" property="password" /><!-- columnはselect結果のカラム名、 propertyにJavaクラスのフィールド名を指定する -->
     <result column="user_name" property="userName" />
     <result column="birthday" property="birthday" />
     <result column="age" property="age" />
@@ -73,7 +73,7 @@
   </select>
 
   <!-- ユーザー1件検索 -->
-  <select id="findOne" resultMap="user">
+  <select id="findOne" resultMap="user"><!-- マッピング定義したものはresultMapの属性にid名を指定すれば使える -->
     select
         m_user.user_id
       , m_user.password
