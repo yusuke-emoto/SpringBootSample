@@ -15,7 +15,7 @@
       <h1 class="h2">ユーザー詳細</h1>
     </div>
     <form id="user-detail-form" method="post" th:action="@{/user/detail}" class="form-signup" th:object="${userDetailForm}">
-      <input type="hidden" th:field="*{userId}" />
+      <input type="hidden" th:field="*{userId}" /><!-- input type="hidden"で画面上は非表示になる。th:fieldなのでid,name,valueにuserDetailFormのuserIdを指定している-->
       <!-- ユーザー詳細情報 -->
       <table class="table table-striped table-bordered table-hover">
         <tbody>
@@ -59,7 +59,7 @@
       <!-- ボタンエリア -->
       <div class="text-center">
         <!-- 削除ボタン -->
-        <button class="btn btn-danger" type="submit" name="delete">
+        <button class="btn btn-danger" type="submit" name="delete"><!-- controller側のparamsとname属性を一致させることで同じPostメソッドのリクエストでも分けることができる。 -->
           削除
         </button>
         <!-- 更新ボタン -->

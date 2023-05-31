@@ -20,7 +20,7 @@ public interface UserMapper {
     public MUser findOne(String userId);
 
     /** ユーザー更新(1件) */
-    public void updateOne(@Param("userId") String userId,
+    public void updateOne(@Param("userId") String userId, //複数引数を使用する場合、メソッドの引数に@Paramアノテーションをつける
             @Param("password") String password,
             @Param("userName") String userName);
 

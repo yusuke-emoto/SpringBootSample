@@ -46,29 +46,29 @@ public class UserDetailController {
     }
 
     /** ユーザー更新処理 */
-    @PostMapping(value = "/detail", params = "update")
+    @PostMapping(value = "/detail", params = "update") //　/detailにPOSTメソッドでリクエストが来る且つ、その送られてくるリクエストのname属性がupdateだった場合、メソッドが動く
     public String updateUser(UserDetailForm form, Model model) {
 
         try {
             // ユーザーを更新
-            userService.updateUserOne(form.getUserId(),
+            userService.updateUserOne(form.getUserId(), //userServiceクラスのupdateUserOneメソッドにUserDetailFormクラスのUserId、Password,UserNameを引数として渡している。
                     form.getPassword(),
                     form.getUserName());
         } catch (Exception e) {
             log.error("ユーザー更新でエラー", e);
         }
         // ユーザー一覧画面にリダイレクト
-        return "redirect:/user/list";
+        return "redirect:/user/list"; //更新が二重でかからないようにPRGパターンを使う
     }
 
     /** ユーザー削除処理 */
-    @PostMapping(value = "/detail", params = "delete")
+    @PostMapping(value = "/detail", params = "delete") //　/detailにPOSTメソッドでリクエストが来る且つ、その送られてくるリクエストのname属性がdeleteだった場合、メソッドが動く
     public String deleteUser(UserDetailForm form, Model model) {
 
         // ユーザーを削除
-        userService.deleteUserOne(form.getUserId());
+        userService.deleteUserOne(form.getUserId());//userServiceクラスのdeleteUserOneクラスにUserDetailFormクラスのUserIdを引数として渡している
 
         // ユーザー一覧画面にリダイレクト
-        return "redirect:/user/list";
+        return "redirect:/user/list"; //削除が二重でかからないようにPRGパターンを使う
     }
 }
