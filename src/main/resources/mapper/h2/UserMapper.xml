@@ -63,8 +63,8 @@
     from
       m_user
     <where>
-      <if test="userId != null">
-        user_id like '%' || #{userId} || '%'
+      <if test="userId != null"><!-- ifタグはif文と使い方は一緒。条件式がtureならifタグの中のSQL文が追加される -->
+        user_id like '%' || #{userId} || '%' <!-- likeは曖昧検索をする際に使う。この場合0文字以上の任意の文字列+userid+0文字以上の任意の文字列の条件に当てはまるものを検索している-->
       </if>
       <if test="userName != null">
         and user_name like '%' || #{userName} || '%'

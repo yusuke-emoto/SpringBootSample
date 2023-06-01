@@ -27,13 +27,13 @@ public class UserListController {
 
     /** ユーザー一覧画面を表示 */
     @GetMapping("/list")
-    public String getUserList(/*@ModelAttribute UserListForm form,*/ Model model) {
+    public String getUserList(@ModelAttribute UserListForm form, Model model) {
 
         // formをMUserクラスに変換
-      /*  MUser user = modelMapper.map(form, MUser.class);*/
+        MUser user = modelMapper.map(form, MUser.class);
 
         // ユーザー一覧取得
-        List<MUser> userList = userService.getUsers(/*user*/); //UserServiceクラスのgetUsersメソッドの返り値をuserListに代入している。
+        List<MUser> userList = userService.getUsers(user); //UserServiceクラスのgetUsersメソッドの返り値をuserListに代入している。
 
         // Modelに登録
         model.addAttribute("userList", userList); //取得してきた値userListをキー名"userList"と一緒にModelに登録
@@ -47,13 +47,13 @@ public class UserListController {
     public String postUserList(@ModelAttribute UserListForm form, Model model) {
 
         // formをMUserクラスに変換
-        MUser user = modelMapper.map(form, MUser.class);
+        MUser user = modelMapper.map(form, MUser.class); //UserListFormクラスの変数formの値をmodelMapperのmapメソッドを使ってコピーして変数userへ代入
 
         // ユーザー検索
-        List<MUser> userList = userService.getUsers(user);
+        List<MUser> userList = userService.getUsers(user); //userServiceクラスのgetUsersに引数userを渡して条件に当てはまるものを検索して変数userListへ代入
 
         // Modelに登録
-        model.addAttribute("userList", userList);
+        model.addAttribute("userList", userList);//検索された値が入ったuserListをModelに登録
 
         // ユーザー一覧画面を表示
         return "user/list";
