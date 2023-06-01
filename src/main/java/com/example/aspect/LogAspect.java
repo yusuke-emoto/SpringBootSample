@@ -36,7 +36,7 @@ public class LogAspect {
     /** コントローラーの実行前後にログ出力する */
     //@Around("bean(*Controller)")
     //@Around("@annotation(org.springframework.web.bind.annotation.GetMapping)")
-    @Around("@within(org.springframework.stereotype.Controller)")
+    @Around("@within(org.springframework.stereotype.Controller)")//@Withinで指定したクラスのすべてがAOPの対象となる。この場合、全てのcontrollerが対象。@Aroundをつけることで対象メソッドの実行前後に処理が実行できる
     public Object startLog(ProceedingJoinPoint jp) throws Throwable {
 
         // 開始ログ出力
@@ -44,7 +44,8 @@ public class LogAspect {
 
         try {
             // メソッド実行
-            Object result = jp.proceed();
+            Object result = jp.proceed();//理屈はわからないがProceedingJoinPointのproceedメソッドを使うと対象のメソッドが実行される（この場合はController）
+            
 
             // 終了ログ出力
             log.info("メソッド終了: " + jp.getSignature());
