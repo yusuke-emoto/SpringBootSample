@@ -36,7 +36,7 @@ public class UserDetailController {
 
         // MUserをformに変換
         form = modelMapper.map(user, UserDetailForm.class);//検索してきた値userをUserDetailFormクラスにコピー
-        form.setSalaryList(user.getSalaryList());
+        form.setSalaryList(user.getSalaryList());//userのSalaryListの値をformにセット
 
         // Modelに登録
         model.addAttribute("userDetailForm", form);//コピーして代入した値formをキー名"userDetailForm"でModelに登録

@@ -50,7 +50,7 @@
           <tr>
             <th>部署名</th>
             <td>
-              <span th:if="*{department != null}" th:text="*{department.departmentName}">
+              <span th:if="*{department != null}" th:text="*{department.departmentName}"><!-- th:ifなので department != nullがtrueの時、department.departmentName（部署名）を表示する-->
               </span>
             </td>
           </tr>

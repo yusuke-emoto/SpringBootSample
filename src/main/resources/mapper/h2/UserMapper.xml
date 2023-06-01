@@ -15,8 +15,8 @@
     <result column="gender" property="gender" />
     <result column="department_id" property="departmentId" />
     <result column="role" property="role" />
-    <association property="department" resultMap="department"/>
-    <collection property="salaryList" resultMap="salary" columnPrefix="salary_"/>
+    <association property="department" resultMap="department"/><!-- associationを使うとテーブル結合ができる -->
+    <collection property="salaryList" resultMap="salary" columnPrefix="salary_"/><!-- collectionタグは一対多のテーブル結合の時に用いる。カラム名の重複を避けるためにcolumnPrefix 属性を使う-->
   </resultMap>
 
   <!-- マッピング定義(部署) -->
