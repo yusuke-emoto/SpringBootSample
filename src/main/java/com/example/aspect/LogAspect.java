@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Aspect
+@Aspect //AOPクラスには@Aspectと@Componentアノテーションをつける
 @Component
 @Slf4j
 public class LogAspect {
@@ -19,16 +19,16 @@ public class LogAspect {
      * サービスの実行前にログ出力する.
      * 対象:[UserService]をクラス名に含んでいる.
      */
-    @Before("execution(* *..*.*UserService.*(..))")
+    @Before("execution(* *..*.*UserService.*(..))") //@Beforeはメソッドの発動タイミングを指定している。この場合はメソッドの発動前。executionでどの範囲かを指定している
     public void startLog(JoinPoint jp) {
-        log.info("メソッド開始: " + jp.getSignature());
+        log.info("メソッド開始: " + jp.getSignature());//JoinPointクラスのgetSignatureメソッドを使ってメソッド名、引数の型、引数の数を表示させる
     }
 
     /**
      * サービスの実行後にログ出力する.
      * 対象:[UserService]をクラス名に含んでいる.
      */
-    @After("execution(* *..*.*UserService.*(..))")
+    @After("execution(* *..*.*UserService.*(..))")//@After なので対象のメソッド処理が終わった後に処理が動く
     public void endLog(JoinPoint jp) {
         log.info("メソッド終了: " + jp.getSignature());
     }
