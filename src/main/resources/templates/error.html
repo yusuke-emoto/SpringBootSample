@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <title>Error</title>
-</head>
+</head><!-- 共通のエラー画面を作成するにはtemplates配下にerror.htmlファイルを作成するだけ  -->
 <body>
-  <h1 th:text="${status} + ' ' + ${error}"></h1>
-  <p th:text="${message}"></p>
+  <h1 th:text="${status} + ' ' + ${error}"></h1><!-- ${status}でHTTPのエラーコードの表示。${error}でエラー コードの概要の表示 -->
+  <p th:text="${message}"></p><!-- {message}でエラーメッセージの表示 -->
   <p>ログイン画面に戻ってください</p>
   <form method="post" th:action="@{/logout}">
     <button class="btn btn-link" type="submit">ログイン画面に戻る</button>
