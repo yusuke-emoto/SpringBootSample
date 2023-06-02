@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@EnableWebSecurity
+@EnableWebSecurity//セキュリティ設定クラスを作るには@EnableWebSecurityと@ConfigurationをつけてWebSecurityConfigurerAdapterクラスを継承する
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**")
                 .antMatchers("/css/**")
                 .antMatchers("/js/**")
-                .antMatchers("/h2-console/**");
+                .antMatchers("/h2-console/**");//web.  .ignoring().antMatchers()でセキュリティ対象から除外できる
     }
 
     /** セキュリティの各種設定 */
@@ -47,13 +47,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll() //直リンクOK
                 .antMatchers("/user/signup").permitAll() //直リンクOK
                 .antMatchers("/user/signup/rest").permitAll() //直リンクOK
-                .antMatchers("/hello").permitAll()
                 .antMatchers("/admin").hasAuthority("ROLE_ADMIN") // 権限制御
                 .anyRequest().authenticated(); // それ以外は直リンクNG
 		
         // ログイン処理
         http
-            .formLogin()
+            .formLogin()//http.formLoginメソッドでログイン処理を追加できる
                 .loginProcessingUrl("/login") // ログイン処理のパス
                 .loginPage("/login") // ログインページの指定
                 .failureUrl("/login?error") // ログイン失敗時の遷移先

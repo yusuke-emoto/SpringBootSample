@@ -19,7 +19,7 @@
         th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
         class="text-danger">
         ログインエラーメッセージ
-      </p>
+      </p><!-- もしセキュリティに引っかかったら、Springセキュリティが用意しているmessageを表示するよ -->
       <!-- ユーザーID -->
       <div class="form-group">
         <label for="userId" class="sr-only">userId</label> <!--sr-only"のsrはスクリーンリーダーのこと。sr-onlyを指定した要素はスクリーンリーダーのみに読み上げられる  -->
