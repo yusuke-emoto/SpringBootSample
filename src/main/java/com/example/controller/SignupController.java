@@ -76,19 +76,19 @@ public class SignupController {
     }
 
     /** データベース関連の例外処理 */
-    @ExceptionHandler(DataAccessException.class)
+    @ExceptionHandler(DataAccessException.class)//@ExceptionHandlerをつけると例外処理を実装できる（今回はDataAccessExceptionが起きたときの処理）
     public String dataAccessExceptionHandler(DataAccessException e, Model model) {
 
         // 空文字をセット
-        model.addAttribute("error", "");
+        model.addAttribute("error", "");//エラーコードの概要をModelに登録。今回は空文字
 
         // メッセージをModelに登録
-        model.addAttribute("message", "SignupControllerで例外が発生しました");
+        model.addAttribute("message", "SignupControllerで例外が発生しました");//エラーメッセージをModelに登録。
 
         // HTTPのエラーコード（500）をModelに登録
-        model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+        model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);//HTTPのエラーコード（500）をModelに登録
 
-        return "error";
+        return "error";//error.htmlを返す。error.htmlでそれぞれModelに登録したものを出力する
     }
 
     /** その他の例外処理 */

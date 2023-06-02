@@ -6,11 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice
+@ControllerAdvice//全てのcontrollerに共通するメソッドを用意できる
 public class GlobalControllAdvice {
 
     /** データベース関連の例外処理 */
-    @ExceptionHandler(DataAccessException.class)
+    @ExceptionHandler(DataAccessException.class)//DataAccessExceptionが発生したときの処理
     public String dataAccessExceptionHandler(DataAccessException e, Model model) {
 
         // 空文字をセット
