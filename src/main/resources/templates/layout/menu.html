@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorate="~{layout/layout}"
-  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"><!-- sec:authorizeを使うために必要 -->
 <head>
 </head>
 <body>
@@ -11,7 +11,7 @@
       <li role="presentation">
         <a class="nav-link" th:href="@{'/user/list'}">ユーザ一覧</a>
       </li>
-      <li role="presentation" sec:authorize="hasRole('ADMIN')">
+      <li role="presentation" sec:authorize="hasRole('ADMIN')"><!-- sec:authorize属性にhasRole（）を指定することで（）内の権限を持っていない場合は、表示されない。 -->
         <a class="nav-link" th:href="@{'/admin'}">アドミン専用</a>
       </li>
     </ul>
