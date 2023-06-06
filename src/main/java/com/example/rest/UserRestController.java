@@ -25,7 +25,7 @@ import com.example.form.SignupForm;
 import com.example.form.UserDetailForm;
 import com.example.form.UserListForm;
 
-@RestController
+@RestController //@RestControllerをつけるとそのクラス内のメソッドの戻り値をRESTで受け取ることができる
 @RequestMapping("/user")
 public class UserRestController {
 
@@ -56,17 +56,17 @@ public class UserRestController {
             BindingResult bindingResult, Locale locale) {
 
         // 入力チェック結果
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {//バリデーションでエラーが起きたら
             // チェック結果:NG
-            Map<String, String> errors = new HashMap<>();
+            Map<String, String> errors = new HashMap<>(); //Map型の変数errorにHashMapをインスタンス化して代入
 
             // エラーメッセージ取得
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                String message = messageSource.getMessage(error, locale);
-                errors.put(error.getField(), message);
+            for (FieldError error : bindingResult.getFieldErrors()) {//getFieldErrors()でバリデーションエラーになったフィールドの名称を受け取れる
+                String message = messageSource.getMessage(error, locale);//バリデーションエラーになったフィールド名をmessageSource.getMessageメソッドの引数に渡して、それぞれに対応したメッセージを代入
+                errors.put(error.getField(), message);//Map型errosにバリデーションエラーのフィールド名とエラーメッセージを登録
             }
             // エラー結果の返却
-            return new RestResult(90, errors);
+            return new RestResult(90, errors);//90はバリデーション結果NGのときのリターンコード
         }
 
         // formをMUserクラスに変換
@@ -76,7 +76,7 @@ public class UserRestController {
         userService.signup(user);
 
         // 結果の返却
-        return new RestResult(0, null);
+        return new RestResult(0, null);//0は正常終了の時のリターンコード
     }
 
     /** ユーザーを更新 */
