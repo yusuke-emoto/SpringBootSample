@@ -63,9 +63,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // ログアウト処理
         http
             .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout");
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))//デフォルトの設定ではログアウト処理はPOSTメソッドで送られる。GETメソッドでリクエストを送りたい場合は、logoutRequestMatcherを追加する
+                .logoutUrl("/logout")//ログアウトのリクエスト先のパスの設定。th:actionと（）の中を一致させる
+                .logoutSuccessUrl("/login?logout");//ログアウト成功時の遷移先の指定
 
         // CSRF対策を無効に設定（一時的）
         //http.csrf().disable();
