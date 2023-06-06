@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();//passwordEncoder()というメソッドをBeanに登録している。BCryptPasswordEncoderはパスワードをハッシュ化できる。（ランダムな文字列に変換する）
     }
 
     /** セキュリティの対象外を設定 */
@@ -76,12 +76,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         PasswordEncoder encoder = passwordEncoder();
-        // インメモリ認証
+        // インメモリ認証　auth.inMemoryAuthentication()でインメモリ認証を作れる（仮のIDとパスでログインできる）
         /*
         auth
             .inMemoryAuthentication()
                 .withUser("user") // userを追加
-                    .password(encoder.encode("user"))
+                    .password(encoder.encode("user"))//passwordEncoder()メソッドを使って"user"を暗号化している
                     .roles("GENERAL")
                 .and()
                 .withUser("admin") // adminを追加
