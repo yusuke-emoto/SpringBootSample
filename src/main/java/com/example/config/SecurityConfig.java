@@ -91,7 +91,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // ユーザーデータ認証
         auth
-            .userDetailsService(userDetailsService)
-            .passwordEncoder(encoder);
+            .userDetailsService(userDetailsService)//userDetailsServiceメソッドに自作したuserDetailsServiceを引数（設定）としてわたす
+            .passwordEncoder(encoder);//変数encoderに入ってる内容でパスワードの暗号化を行う
     }
 }
