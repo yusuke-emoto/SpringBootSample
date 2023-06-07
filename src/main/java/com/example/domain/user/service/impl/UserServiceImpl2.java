@@ -57,11 +57,11 @@ public class UserServiceImpl2 implements UserService {
 	@Override
 	public List<MUser> getUsers(MUser user) {
 		
-		// 検索条件
+		// 検索条件を指定して代入している
 		ExampleMatcher matcher = ExampleMatcher.matching() // and条件
-													.withStringMatcher(StringMatcher.CONTAINING) // Like句
+													.withStringMatcher(StringMatcher.CONTAINING) // Like句　パターンを含む文字列に一致
 													.withIgnoreCase(); // 大文字・小文字の両方
-		return repository.findAll(Example.of(user, matcher));//findAllは全件検索
+		return repository.findAll(Example.of(user, matcher));//findAllは全件検索、指定した検索条件matcherに当てはまるものを検索
 	}
 	
 	/** ユーザー取得（1件）　*/

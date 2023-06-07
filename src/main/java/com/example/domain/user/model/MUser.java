@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -23,7 +25,8 @@ public class MUser {
     private Integer gender;
     private Integer departmentId;
     private String role;
-    @Transient//ORマッピングしたくないフィールドには@Transientをつける
+    @ManyToOne(optional = true)//多対一のテーブル結合するときに@ManyToOneをつける。departmentが一の方。trueの場合nullを許可する
+    @JoinColumn(insertable = false, updatable = false, name = "departmentId")//@JoinColumnで結合するカラムを指定する。name属性に結合先のカラム名を指定する
     private Department department;
     @Transient
     private List<Salary> salaryList;
